@@ -2,7 +2,7 @@ import ImageChops,math, operator,Image,sys,urllib
 def root_mean_square_difference(im1, im2):
 	try:
  
-		diff = ImageChops.difference(im1, im2) #Returns the absolute value of the difference between the two images
+		diff = ImageChops.difference(im1, im2) 
 		h = diff.histogram()
 		sq = (value*(idx**2) for idx, value in enumerate(h))
 		sum_of_squares = sum(sq)
@@ -14,7 +14,7 @@ def root_mean_square_difference(im1, im2):
 def comparing_histograms(img1,img2):
 	h1 = img1.histogram()
 	h2 = img2.histogram()
-	#finding the root mean square  in histograms of two images
+	
 	try:    
 		rms = math.sqrt(reduce(operator.add,map(lambda a,b: (a-b)**2, h1, h2))/len(h1))
 	except TypeError:
@@ -47,8 +47,8 @@ if __name__=='__main__':
 		if cmr==0.0 and rms==0.0:
 			print 'Images are Exactly Equal'
 		elif cmr>0 and cmr <=40:
-			print 'Images are Equal but not exactly equal'
+			print 'Images are Equal but not exact'
 		elif cmr>40 and cmr <=70:
-			print 'Images are Equal, Yet there is some differences'
+			print 'Images are Equal with some differences'
 		else:
 			print 'Images are Not Equal'
